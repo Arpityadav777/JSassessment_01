@@ -1,0 +1,50 @@
+/*
+Assessment Requirements
+1. Create a variable that can hold a number of NFT's. What type of variable might this be?
+2. Create an object inside your mintNFT function that will hold the metadata for your NFTs. 
+   The metadata values will be passed to the function as parameters. When the NFT is ready, 
+   you will store it in the variable you created in step 1
+3. Your listNFTs() function will print all of your NFTs metadata to the console (i.e. console.log("Name: " + someNFT.name))
+4. For good measure, getTotalSupply() should return the number of NFT's you have created
+*/
+// solution :
+
+// Created an array named: Employee_NFTs that will store all the created NFTs
+const Employee_NFTs = []
+
+// created an object(Employee_NFT_object) that will store the metaData of the NFTs
+// on line 27 i have used push() function to store this object in the array(Employee_NFTs)
+// on the next line i have printed that the NFTs is created Succesfully
+
+function mintNFT (E_NFT_id, E_NFT_name, E_NFT_age, E_NFT_ethnicity,  E_NFT_job_title, E_NFT_dressing_style, E_NFT_salary) {
+const Employee_NFT_object = {
+    "Id": E_NFT_id,
+    "Name": E_NFT_name,
+    "Age": E_NFT_age,
+    "Ethnicity": E_NFT_ethnicity,
+    "Job Title": E_NFT_job_title,
+    "Dressing Style": E_NFT_dressing_style,
+    "Salary": E_NFT_salary,
+}
+Employee_NFTs.push(Employee_NFT_object)
+console.log("Sucessfully minted "+ E_NFT_name +" with ID : "+ E_NFT_id)
+}
+
+// created a for loop that will go through the array(Employee_NFTs) of Employee NFT's
+// in line 37 i have printed the metaData of the NFTs
+
+function listNFTs () {
+for (let i = 0; i< Employee_NFTs.length; i++){
+    console.log(Employee_NFTs[i])
+}
+}
+
+// created a function that will print the total number of NFTs created
+function getTotalSupply() {
+console.log("Number of NFTs created are : " + Employee_NFTs.length)
+}
+
+// Calling the function mintNFT, listNFTs, getTotalSupply
+mintNFT("001", "Arx", "18", "Indian", "NFT Creator", "Y2K", "$0")
+listNFTs()
+getTotalSupply()                                              
