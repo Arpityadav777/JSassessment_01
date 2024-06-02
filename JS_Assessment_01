@@ -47,6 +47,7 @@ function displayTotalNFTs() {
 // Passing values of NFTs in the function.
 
 mintEmployeeNFT("001", "Arx", "18", "Indian", "NFT Creator", "Y2K", "$0");
-mintEmployeeNFT("002", "Luna", "22", "Brazilian", "Blockchain Developer", "Casual", "$5000");
+mintEmployeeNFT("002", "Jenna", "22", "Brazilian", "Blockchain Developer", "Casual", "$5000");
+mintEmployeeNFT("003", "Jack", "30", "American", "Project Manager", "Formal", "$7000");
 displayAllNFTs();
 displayTotalNFTs();
