@@ -1,34 +1,52 @@
 // Array to hold all created Employee NFTs
-const employeeNFTs = [];
+const employeeNFTCollection = [];
 
-// Function to mint a new Employee NFT
-function mintNFT(id, name, age, ethnicity, jobTitle, dressingStyle, salary) {
-    const nft = {
+// Function to mint a new "Employee" NFT with a conditional statement.
+function mintEmployeeNFT(id, name, age, ethnicity, jobTitle, dressingStyle, salary) {
+    if (!id || !name || !age || !ethnicity || !jobTitle || !dressingStyle || !salary) {
+        console.error("All fields are required to mint an NFT.");
+        return;
+    }
+// Object to store the metadata of the created NFTs
+    const nftMetadata = {
         "ID": id,
         "Name": name,
         "Age": age,
         "Ethnicity": ethnicity,
-        "Job Title": jobTitle,
-        "Dressing Style": dressingStyle,
+        "JobTitle": jobTitle,
+        "DressingStyle": dressingStyle,
         "Salary": salary,
+        "MintedAt": new Date().toISOString(),
     };
-    employeeNFTs.push(nft);
-    console.log(`Successfully minted ${name} with ID: ${id}`);
+    employeeNFTCollection.push(nftMetadata);
+    console.log(`Successfully minted NFT for ${name} (ID: ${id}) at ${nftMetadata.MintedAt}`);
 }
 
-// Function to list all minted Employee NFTs
-function listNFTs() {
-    for (let i = 0; i < employeeNFTs.length; i++) {
-        console.log(employeeNFTs[i]);
+// Function to list all minted Employee NFTs.
+
+function displayAllNFTs() {
+    if (employeeNFTCollection.length === 0) {
+        console.log("No NFTs have been minted yet.");
+        return;
     }
+
+    console.log("List of all minted Employee NFTs:");
+    employeeNFTCollection.forEach((nft, index) => {
+        console.log(`${index + 1}. ${nft.Name} (ID: ${nft.ID}) - ${nft.JobTitle}`);
+        console.log(`   Age: ${nft.Age}, Ethnicity: ${nft.Ethnicity}, Style: ${nft.DressingStyle}, Salary: ${nft.Salary}`);
+        console.log(`   Minted At: ${nft.MintedAt}`);
+    });
 }
 
-// Function to get the total number of Employee NFTs created
-function getTotalSupply() {
-    console.log(`Total number of NFTs created: ${employeeNFTs.length}`);
+// Function to get the total number of Employee NFTs created.
+function displayTotalNFTs() {
+    const total = employeeNFTCollection.length;
+    console.log(`A total of ${total} Employee NFT${total !== 1 ? 's' : ''} ${total !== 1 ? 'have' : 'has'} been created.`);
 }
 
-// Example usage of the functions
-mintNFT("001", "Arx", "18", "Indian", "NFT Creator", "Y2K", "$0");
-listNFTs();
-getTotalSupply();
+// Passing values of NFTs in the function.
+
+mintEmployeeNFT("001", "Arx", "18", "Indian", "NFT Creator", "Y2K", "$0");
+mintEmployeeNFT("002", "Luna", "22", "Brazilian", "Blockchain Developer", "Casual", "$5000");
+displayAllNFTs();
+displayTotalNFTs();
